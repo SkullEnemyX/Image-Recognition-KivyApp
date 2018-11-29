@@ -1,0 +1,113 @@
+#:import SwapTransition kivy.uix.screenmanager.SwapTransition
+
+<RootScreen>:
+    transition: SwapTransition()
+    StartScreen:
+    GameScreen:
+
+<StartScreen>:
+    name: "start"
+    canvas.before:
+        Rectangle:
+            source: 'black.jpg'
+            pos: self.pos
+            size: self.size
+    FloatLayout:
+        Button:
+            text: "Details"
+            size_hint: 0.1, 0.1
+            pos_hint: {'center_x':0.6,'center_y':0.2}
+            font_size: 20
+            color: [0.7,0.7,0.7,1]
+            background_color: [1,1,1,0.1]
+            on_press:
+            on_release: root.manager.current = "game"
+        Button:
+            text: 'Play/Pause'
+            size_hint: 0.1, 0.1
+            pos_hint: {'center_x':0.4, 'center_y':0.2}
+            font_size: 20
+            color: [0.7,0.7,0.7,1]
+            background_color: [1,1,1,0.1]
+            on_press: app.pause
+
+        Label:
+            text: "Video Processing: Live Gun Detection"
+            size_hint: 0.1,0.1
+            pos_hint: {"center_x": 0.5,"top": 1}
+            font_size: 30
+            color: [0.19921875,0.796875,1,1]
+            bold: True
+        Label:
+            text: "Created By: Vineet Kishore , Saurabh Sawant , Kartikay Kaul"
+            size_hint: 0.1,0.1
+            pos_hint: {"center_x": 0.5,"bottom": 1}
+            font_size: 18
+            color: [0.19921875,0.796875,1,1]
+
+
+
+<GameScreen>:
+    name: "game"
+    canvas.before:
+        Rectangle:
+            source: 'black.jpg'
+            pos: self.pos
+            size: self.size
+    FloatLayout:
+        Button:
+            text: "Main Menu"
+            font_size: 16
+            size_hint: 0.07, 0.07
+            pos_hint: {'center_x':.5, 'center_y':.04}
+            background_color: [1,1,1,0.2]
+            on_release: root.manager.current  = "start"
+
+        TextInput:
+            id: pink
+            hint_text: "Enter Your Query"
+            height: 40
+            font_size: 15
+            size_hint: 0.2,None
+            pos_hint: {'top': 0.85,'center_x': .5}
+            border: 5,5,5,5
+            multiline: False
+            focus: True
+            background_color: [1,1,0.8,1]
+        TextInput:
+            id: view
+            hint_text: "Information To Be Displayed"
+            height: 40
+            font_size: 15
+            size_hint: 0.4,0.4
+            pos_hint: {'center_y': 0.3,'center_x': .5}
+            border: 5,5,5,5
+            focus: True
+            background_color: [1,1,0.8,1]
+        Label:
+            text: "Query/Search: "
+            font_size: 30
+            bold: True
+            pos_hint: {'top': 1.33,'center_x': .32}
+        Button:
+            text: "Enter"
+            font_size: 16
+            size_hint: 0.07, 0.07
+            pos_hint: {'center_x':.7, 'center_y':.828}
+            background_color: [1,1,1,0.2]
+            on_press: root.check()
+        Image:
+            id: img1
+            source: ''
+            keep_ratio: False
+            size_hint: 1, 0.5
+            pos_hint: {'center_x':.35, 'center_y':.65}
+        Image:
+            id: img2
+            source: 'Display.jpg'
+            keep_ratio: True
+            size_hint: 0.2,0.2
+            pos_hint: {'center_x':.5, 'center_y':.63}
+
+
+
